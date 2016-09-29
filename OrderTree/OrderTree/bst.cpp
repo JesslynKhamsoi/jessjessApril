@@ -85,38 +85,38 @@ private:
 
 	void printLevelOrderHelper(Node<T> *root)
 	{
-		if (!root) return;
+		if (root == nullptr)
+		{
+			return;
+		}
 		queue<Node<T> *> q;
 
 		// Enqueue Root and initialize height
 		q.push(root);
-		int height = 0;
 
-		while (1)
-		{
-			// nodeCount (queue size) indicates number of nodes
+		// nodeCount (queue size) indicates number of nodes
 			// at current lelvel.
 			int nodeCount = q.size();
-			if (nodeCount == 0)
-				
-
-			height++;
-
+			Node<T> *node = q.front();
 			// Dequeue all nodes of current level and Enqueue all
 			// nodes of next level
-			while (nodeCount > 0)
+			while (node != nullptr)
 			{
-				Node<T> *node = q.front();
-				cout << ' ' << q.front();
-				q.pop();
-				
-				if (node->left != NULL)
-					q.push(node->left);
-				if (node->right != NULL)
-					q.push(node->right);
-				nodeCount--;
+				while (nodeCount > 0)
+				{
+					node = q.front();
+					cout << ' ' << q.front();
+					q.pop();
+
+					if (node->left != NULL)
+						q.push(node->left);
+					if (node->right != NULL)
+						q.push(node->right);
+					nodeCount--;
+				}
+				nodeCount++;
 			}
-		}
+		
 	
 
 	//	bool done = false; // true if at end of tree
