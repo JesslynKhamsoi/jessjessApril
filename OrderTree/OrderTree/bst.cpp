@@ -25,7 +25,7 @@ struct Node {
 
 	Node(T val) {
 		this->value = val;
-		left = nullptr;
+		left = nullptr; // set pointers to null pointer so program does not crash, ortherwise pointers are pointing to some unknown value.
 		right = nullptr;
 	}
 
@@ -85,102 +85,38 @@ private:
 		printPreOrderHelper(root->right);
 	}
 
-	void printLevelOrderHelper(Node<T> *root)
+	void printLevelOrderHelper(Node<T> *root) //used as reference: http://www.geeksforgeeks.org/iterative-method-to-find-height-of-binary-tree/
 	{
-		if (root == nullptr)
+		if (root == nullptr) //if tree is empty exit function
 		{
 			return;
 		}
-		queue<Node<T> *> q;
+		queue<Node<T> *> q; // create queue (using stl queue class)
 
-		// Enqueue Root and initialize height
+		// Enqueue Root
 		q.push(root);
 
-		// nodeCount (queue size) indicates number of nodes
-			// at current lelvel.
+		    // nodeCount = number of nodes in queue at this point
 			int nodeCount = q.size();
-			Node<T> *node = q.front();
-			// Dequeue all nodes of current level and Enqueue all
-			// nodes of next level
-			while (node != nullptr)
+			Node<T> *node = q.front(); // create new node to keep track of front of the queue
+			
+			while (!(q.empty())) // while there are still nodes in queue, go through loop
 			{
-				while (nodeCount > 0)
+				while (nodeCount > 0) //nodeCount will only ever be a 1 or 0. This makes it so that the loop is only gone through once for each node, checking it's left and right pointers
 				{
-					node = q.front();
-					cout << ' ' <<  (node)->value;
-					q.pop();
+					node = q.front(); // node updates to front of queue at the start of loop
+					cout <<  (node)->value << ' '; //print out first node's value
+					q.pop(); //dequeue front of queue
 
-					if (node->left != nullptr)
+					if (node->left != nullptr) // enqueue nodes of left and right pointer if they are not null
 						q.push(node->left);
 					if (node->right != nullptr)
 						q.push(node->right);
-					nodeCount--;
+					nodeCount--; // nodeCount is now zero
 				}
-				nodeCount++;
+				nodeCount++; //NodeCount is back to one for the next node
 			}
 		
-	
-
-	//	bool done = false; // true if at end of tree
-	//	int level = 1;
-	//	
-	//		std::queue<Node<T> *> tree;
-	//		tree.push(root);
-	//		Node <T> *cur = root;
-	//	do{
-	//		while (cur != nullptr)
-	//		{
-	//			for (int j = 0; j < level; j++)
-	//			{
-	//				cur = cur->left;
-	//			}
-	//		}
-	//	if ((cur->left == nullptr) && (cur->right == nullptr))
-	//	{
-	//		done = true; //end of left side
-	//	}
-	//	if (cur->left != nullptr)
-	//	{
-	//		tree.push(cur->left);
-	//	}
-	//	if (cur->right != nullptr)
-	//	{
-	//		tree.push(cur->right);
-	//	}
-	//	// checking right side of level
-	//	cur = root;
-
-	//	while (cur != nullptr)
-	//	{
-	//		for (int j = 0; j < level; j++)
-	//		{
-	//			cur = cur->right;
-	//		}
-	//	}
-	//	if ((done == true) && (cur->left == nullptr) && (cur->right == nullptr))
-	//	{
-	//		done = true; // end of tree?
-	//	}
-	//	else
-	//	{
-	//		done = false;// at least right side still has more nodes
-	//	}
-	//	if (cur->left != nullptr)
-	//	{
-	//		tree.push(cur->left);
-	//	}
-	//	if (cur->right != nullptr)
-	//	{
-	//		tree.push(cur->right);
-	//	}
-	//	level++; //level of tree goes up 
-	//}while (done == true);
-	////print queue FIFO
-	//while (!tree.empty())
-	//{
-	//	cout << ' ' << tree.front();
-	//	tree.pop();
-	//}
 	cout << '\n';
 	cout << "UNIMPLEMENTED AT THIS TIME -- REPLACE!" << endl;
 	cout << " ** Requred to use the STL queue class (that's a huge hint)!" << endl;
