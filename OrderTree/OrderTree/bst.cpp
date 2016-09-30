@@ -25,6 +25,8 @@ struct Node {
 
 	Node(T val) {
 		this->value = val;
+		left = nullptr;
+		right = nullptr;
 	}
 
 	Node(T val, Node<T> left, Node<T> right) {
@@ -105,12 +107,12 @@ private:
 				while (nodeCount > 0)
 				{
 					node = q.front();
-					cout << ' ' << q.front();
+					cout << ' ' <<  (node)->value;
 					q.pop();
 
-					if (node->left != NULL)
+					if (node->left != nullptr)
 						q.push(node->left);
-					if (node->right != NULL)
+					if (node->right != nullptr)
 						q.push(node->right);
 					nodeCount--;
 				}
