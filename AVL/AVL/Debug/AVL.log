@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\jesslyn\documents\github\jessjessapril\avl\avl\main.cpp(49): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\jesslyn\documents\github\jessjessapril\avl\avl\main.cpp(53): warning C4018: '<': signed/unsigned mismatch
+  AVL.vcxproj -> C:\Users\Jesslyn\Documents\GitHub\jessjessApril\AVL\Debug\AVL.exe

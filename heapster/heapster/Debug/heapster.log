@@ -1,0 +1,6 @@
+﻿  main.cpp
+c:\users\jesslyn\documents\github\jessjessapril\heapster\heapster\heap.h(158): warning C4018: '<': signed/unsigned mismatch
+  c:\users\jesslyn\documents\github\jessjessapril\heapster\heapster\heap.h(157): note: while compiling class template member function 'void Heap<int>::printAll(void) const'
+  c:\users\jesslyn\documents\github\jessjessapril\heapster\heapster\main.cpp(40): note: see reference to function template instantiation 'void Heap<int>::printAll(void) const' being compiled
+  c:\users\jesslyn\documents\github\jessjessapril\heapster\heapster\main.cpp(16): note: see reference to class template instantiation 'Heap<int>' being compiled
+  heapster.vcxproj -> C:\Users\Jesslyn\Documents\GitHub\jessjessApril\heapster\Debug\heapster.exe

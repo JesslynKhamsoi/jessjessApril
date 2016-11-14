@@ -1,0 +1,5 @@
+﻿  mergeSort.cpp
+c:\users\jesslyn\documents\github\jessjessapril\mergesort\mergesort\mergesort.cpp(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\jesslyn\documents\github\jessjessapril\mergesort\mergesort\mergesort.cpp(115): warning C4018: '<': signed/unsigned mismatch
+c:\users\jesslyn\documents\github\jessjessapril\mergesort\mergesort\mergesort.cpp(174): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MergeSort.vcxproj -> C:\Users\Jesslyn\Documents\GitHub\jessjessApril\MergeSort\Debug\MergeSort.exe
