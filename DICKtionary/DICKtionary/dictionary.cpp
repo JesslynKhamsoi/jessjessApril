@@ -153,5 +153,5 @@ Word Dictionary:: remover(string word) // help with this one
 			return *tmp;
 		}
 	}
-	return nullptr;
+	return nullptr_t;
 }
