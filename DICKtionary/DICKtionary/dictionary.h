@@ -28,7 +28,7 @@ public:
 	int counter(); //done
 	void insert(Word &vocab); //done
 	int findNextPrime(int n);//used gitHub help suggested in assignment
-	Word remover (string word); //halp!
+	Word* remover (string word); //halp!
 	bool contains(string word);
 	void rehash();
 private:

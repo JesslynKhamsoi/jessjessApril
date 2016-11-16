@@ -138,7 +138,7 @@ void Dictionary:: rehash()
 }
 
 //named this funtion remover instead of delete to not confuse with the already existing delete funtion
-Word Dictionary:: remover(string word) // help with this one
+Word* Dictionary:: remover(string word) // help with this one
 {
 	
 	Word * tmp = new Word(word, " ");
@@ -150,7 +150,7 @@ Word Dictionary:: remover(string word) // help with this one
 		if ((fakeVec[i].name).compare(word) == 0)
 		{
 			fakeVec.erase(fakeVec.begin() + i);// :( why
-			return *tmp;
+			return tmp;
 		}
 	}
 	return nullptr;
