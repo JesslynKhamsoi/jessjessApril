@@ -13,29 +13,19 @@ int main(int argc,char *argv [])
 	test.parser(file);
 	string str;
 	char c;
-	do
-	{
 		cout << "\nEnter a word to define: ";
-		//getline(cin, val);
-		while (cin.get(c) && c != '\n')
+	while (getline(cin, str))
+	{
+		for (auto & c : str)
 		{
-			if (cin.eof())
-			{
-				break;
-			}
-			
-				str += c;
+			c = toupper(c);
 		}
-		if (c == '\n')
+		if (!(test.contains(str)))
 		{
-			for (auto & s : str)
-			{
-				s = toupper(s);
-			}
-			if (!(test.contains(str)))
-			{
-				cout << "Word not found.\n";
-			}
+			cout << "Word not found.\n";
 		}
-	} while (!(cin.eof()));//does this work?
+		cout << "\nEnter a word to define: ";
+		str = "";
+	}
+	
 }
