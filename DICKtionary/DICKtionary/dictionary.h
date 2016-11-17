@@ -25,7 +25,7 @@ public:
 	//Dictionary(const Dictionary &d);
 	//~Dictionary();
 	void parser(string f); //get words to pass into insert
-	int counter(); //done
+	double counter(); //done
 	void insert(Word &vocab); //done
 	int findNextPrime(int n);//used gitHub help suggested in assignment
 	Word* remover (string word); //halp!

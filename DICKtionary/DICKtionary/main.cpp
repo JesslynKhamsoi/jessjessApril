@@ -13,7 +13,7 @@ int main(int argc,char *argv [])
 	test.parser(file);
 	string str;
 	char c;
-		cout << "\nEnter a word to define: ";
+		cout << "\n\nEnter a word to define: ";
 	while (getline(cin, str))
 	{
 		for (auto & c : str)
@@ -22,9 +22,9 @@ int main(int argc,char *argv [])
 		}
 		if (!(test.contains(str)))
 		{
-			cout << "Word not found.\n";
+			cout << "\n\nWord not found.";
 		}
-		cout << "\nEnter a word to define: ";
+		cout << "\n\nEnter a word to define: ";
 		str = "";
 	}
 	

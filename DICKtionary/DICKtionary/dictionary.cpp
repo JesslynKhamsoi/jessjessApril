@@ -35,9 +35,9 @@ void Dictionary :: insert(Word & vocab)
 			rehash();
 		}
 }
-int Dictionary:: counter() //counts words in dictionary
+double Dictionary:: counter() //counts words in dictionary
 {
-	int wordCount = 0;
+	double wordCount = 0;
 	
 	for (int i = 0; i < size; i++)
 	{
@@ -56,29 +56,23 @@ void Dictionary::parser(string f)
 
 	if (dictionary_base.is_open())
 	{
-		cout << "dictionary is opened bish.\n";
 		while (getline(dictionary_base, line, '"'))
 		{
 			getline(dictionary_base, line, '"');
-			//line[line.size() - 1] = '\0'; // changes last index to null character instead of '"'
+			
 			getline(dictionary_base, def, '"');
 			getline(dictionary_base, def, '}');
-			//def = def.substr[def.begin(), def.length() - 1];
-			//getline(dictionary_base, def, '"'); //qoutes are cut off.
+	
 			def[def.size() - 1] = '\0';
 		
 			Word *pword = new Word(line, def);
 			insert(*pword);
 			
-			//bool has = contains("CHILOSTOMATOUS");// testing contains - works af;
-			//if(has == true)
-			//{
-			//	cout << "the word exists";
-			//}
+		
 		}
-		cout <<"Number of words: "<< counter();
-		cout << "Table size: " << size;
-		cout << "Load factor: " << (size / counter());
+		cout <<"\nNumber of words: "<< counter();
+		cout << "\nTable size: " << size;
+		cout << "\nLoad factor: " << (counter()/size);
 	}
 
 	dictionary_base.close();
