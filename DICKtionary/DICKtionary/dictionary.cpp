@@ -1,10 +1,10 @@
 #include "dictionary.h"
-Word::Word(string newName, string newDef)
+Word::Word(string newName, string newDef) //word class constructor
 {
 	name = newName;
 	def = newDef;
 }
-int Word:: key(int tableSize, const string &vocab)
+int Word:: key(int tableSize, const string &vocab) //finds key value for hasing, used book example
 {
 	unsigned int key = 0;
 	for (char ch : vocab)
@@ -16,21 +16,21 @@ int Word:: key(int tableSize, const string &vocab)
 	}
 	return key % tableSize;
 }
-Dictionary::Dictionary(int newSize)
+Dictionary::Dictionary(int newSize) // initializes table with 101 empty vectors, also Dictionary constructor
 {
 	std::vector<Word> link;
 	size = newSize;
 	for (int i = 0; i < size; i++)
 	{
-		chains.push_back (link); //setting vector or "hashtable" to number of size pointers
+		chains.push_back (link); 
 	}
 }
-void Dictionary :: insert(Word & vocab)
+void Dictionary :: insert(Word & vocab) //inserts Words
 {
-	int index = vocab.key(size, vocab.name);
+	int index = vocab.key(size, vocab.name); //finds which vector in table to insert to
 
-		chains[index].push_back(vocab);
-		if (size / counter() == 1)
+		chains[index].push_back(vocab); // pushes word into the correct vector
+		if (size / counter() == 1) //rehash if necessary
 		{
 			rehash();
 		}
@@ -39,92 +39,88 @@ double Dictionary:: counter() //counts words in dictionary
 {
 	double wordCount = 0;
 	
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size; i++) //goes through all vectors
 	{
-	
-			int length = chains[i].size();
+			int length = chains[i].size(); //counts elements in vector in index i of the hashTable
 			wordCount += length;
-		
 	}
 	return wordCount;
 }
-void Dictionary::parser(string f)
+void Dictionary::parser(string f) //coded my own .json parser
 {
-	string line;
-	string def;
-	fstream dictionary_base(f);
+	string line; //word
+	string def; //definition
+	fstream dictionary_base(f); //.json file
 
-	if (dictionary_base.is_open())
+	if (dictionary_base.is_open()) //if file opened
 	{
-		while (getline(dictionary_base, line, '"'))
+		while (getline(dictionary_base, line, '"')) //while not at end of file read until next '"'
 		{
-			getline(dictionary_base, line, '"');
+			getline(dictionary_base, line, '"'); //reading in word, not including qoutation marks
 			
-			getline(dictionary_base, def, '"');
-			getline(dictionary_base, def, '}');
+			getline(dictionary_base, def, '"'); // characters inbetween word and def.
+			getline(dictionary_base, def, '}');  //reading in definition
 	
-			def[def.size() - 1] = '\0';
+			def[def.size() - 1] = '\0'; // adding null to end of definition to take of qoutation marks
 		
-			Word *pword = new Word(line, def);
-			insert(*pword);
+			Word *pword = new Word(line, def); // creating new word with new word, and def
+			insert(*pword); // insert new word into has table
 			
 		
 		}
-		cout <<"\nNumber of words: "<< counter();
+		//printting out dictionary infor before going into qeuery mode
+		cout <<"\nNumber of words: "<< counter(); 
 		cout << "\nTable size: " << size;
 		cout << "\nLoad factor: " << (counter()/size);
 	}
 
-	dictionary_base.close();
+	dictionary_base.close(); //close file
 }
-bool Dictionary::contains(string word)
+bool Dictionary::contains(string word) //returns true if word is found
 {
-	Word *temp = new Word(word, " ");
+	Word *temp = new Word(word, " "); //creat new word with string value of the parameter
 	int hashVal = temp->key(size, word); //find index of vector to search
-	std::vector <Word> fakeVec = chains[hashVal];
+	std::vector <Word> fakeVec = chains[hashVal]; // create copy of vector we are going to search
 	for (int i = 0; i < fakeVec.size(); i++)
 	{
-		
-		int k = (fakeVec[i].name).compare(word);
-		if ((fakeVec[i].name).compare(word) == 0)
+		if ((fakeVec[i].name).compare(word) == 0) //if words are the same, print definition and return true
 		{
 			cout << fakeVec[i].def;
 			return true;
 		}
 	}
 	
-	return false;
+	return false; // word not found
 }
-int Dictionary::findNextPrime(int n)
+int Dictionary::findNextPrime(int n) //finds next prime for rehashing, reffered example provided in assignment
 {
 	bool isPrime = false;
-	while (isPrime == false)
+	while (isPrime == false) 
 	{
-		n++;
-		isPrime = true;
+		n++; // increment n
+		isPrime = true; //assume n is the next prime
 		for (int i = 2; i < n / 2; i++)
-		{
+		{ //if n is divisible by number 2 through itself divided by two it is not prime
 			if (n % i == 0)
 			{
-				isPrime = false;
+				isPrime = false; //n is now not prime
 			}
 		}
 	}
-	cout << "The next prime is " << n;
-	return n;
+	return n; //reutrn next prime
 }
-void Dictionary:: rehash()
+void Dictionary:: rehash() //resizes and gives values new places in hash table
 {
-	std::vector <std::vector<Word>> copy = chains;
-	size = findNextPrime(2 * size);
+	std::vector <std::vector<Word>> copy = chains; // make copy of hash table
+	size = findNextPrime(2 * size); //this will be the new size, twice as large and still prime
 	chains.resize(size);
-	for (auto & thisVec : chains)
+	for (auto & thisVec : chains) //clearing all vectors in hash table
 	{
 		thisVec.clear();
 	}
 	for (auto & thisVec : copy)
 	{
-		for (auto & x : thisVec)
+		for (auto & x : thisVec) //replacing values into larger array
 		{
 			insert(x);
 		}
@@ -132,18 +128,19 @@ void Dictionary:: rehash()
 }
 
 //named this funtion remover instead of delete to not confuse with the already existing delete funtion
-Word* Dictionary:: remover(string word) // help with this one
+Word* Dictionary:: remover(string word) 
 {
 	
-	Word * tmp = new Word(word, " ");
-	std::vector <Word> fakeVec = chains[tmp->key(size, word)];
+	Word * tmp = new Word(word, " "); //create new Word with same word
+	std::vector <Word> fakeVec = chains[tmp->key(size, word)]; //create copy of vector word is in
 //find the item
 
 	for (int i = 0; i < fakeVec.size(); i++)
 	{
 		if ((fakeVec[i].name).compare(word) == 0)
 		{
-			fakeVec.erase(fakeVec.begin() + i);// :( why
+			fakeVec.erase(fakeVec.begin() + i);// if word is found, delete it
+			chains[tmp->key(size, word)] = fakeVec; //copy updated vecotr to hash table, swaping the old and new vector
 			return tmp;
 		}
 	}

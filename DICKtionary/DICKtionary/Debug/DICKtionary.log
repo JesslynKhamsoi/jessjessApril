@@ -1,3 +1,7 @@
 ﻿  main.cpp
-c:\users\jesslyn\documents\github\jessjessapril\dicktionary\dicktionary\main.cpp(15): warning C4101: 'c': unreferenced local variable
+c:\users\jesslyn\documents\github\jessjessapril\dicktionary\dicktionary\main.cpp(12): warning C4101: 'c': unreferenced local variable
+  dictionary.cpp
+c:\users\jesslyn\documents\github\jessjessapril\dicktionary\dicktionary\dictionary.cpp(84): warning C4018: '<': signed/unsigned mismatch
+c:\users\jesslyn\documents\github\jessjessapril\dicktionary\dicktionary\dictionary.cpp(138): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   DICKtionary.vcxproj -> C:\Users\Jesslyn\Documents\GitHub\jessjessApril\DICKtionary\Debug\DICKtionary.exe
