@@ -55,6 +55,8 @@ public:
 			unordered_map<Vertex *, int>e = v.second.getEdges();
 			for (auto & w : e)
 			{
+				cout << w.second<<"w.second\n";
+				cout << distances.at(v.first)<<"\n";
 				if (w.second + distances.at(v.first)  < distances.at(w.first->getId()))//w.first->getId() - 1
 	
 				{
