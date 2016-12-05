@@ -4,7 +4,7 @@ Word::Word(string newName, string newDef) //word class constructor
 	name = newName;
 	def = newDef;
 }
-int Word:: key(int tableSize, const string &vocab) //finds key value for hasing, used book example
+int Word:: key(int tableSize, const string &vocab) //finds key value for hasing, reffered to book example
 {
 	unsigned int key = 0;
 	for (char ch : vocab)
@@ -78,7 +78,7 @@ void Dictionary::parser(string f) //coded my own .json parser
 }
 bool Dictionary::contains(string word) //returns true if word is found
 {
-	Word *temp = new Word(word, " "); //creat new word with string value of the parameter
+	Word *temp = new Word(word, " "); //create new word with string value of the parameter
 	int hashVal = temp->key(size, word); //find index of vector to search
 	std::vector <Word> fakeVec = chains[hashVal]; // create copy of vector we are going to search
 	for (int i = 0; i < fakeVec.size(); i++)
