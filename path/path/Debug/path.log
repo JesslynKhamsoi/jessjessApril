@@ -53,6 +53,6 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstddef(226): war
               _Kty=Vertex,
               _Ty=int
           ]
-c:\users\jesslyn\documents\github\jessjessapril\path\path\vertex.h(81): warning C4717: 'operator<': recursive on all control paths, function will cause runtime stack overflow
 c:\users\jesslyn\documents\github\jessjessapril\path\path\vertex.h(86): warning C4717: 'operator>': recursive on all control paths, function will cause runtime stack overflow
+c:\users\jesslyn\documents\github\jessjessapril\path\path\vertex.h(81): warning C4717: 'operator<': recursive on all control paths, function will cause runtime stack overflow
   path.vcxproj -> C:\Users\Jesslyn\Documents\GitHub\jessjessApril\path\Debug\path.exe
