@@ -3,6 +3,8 @@
 #include <unordered_map>
 #include <queue>
 #include <functional>
+#include <limits>
+#include <limits.h>
 #define INF INT_MAX
 #include "Vertex.h"
 using namespace std;
