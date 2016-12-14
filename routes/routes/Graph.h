@@ -40,7 +40,7 @@ public:
 
 		{
 			dijkstra_queue.push(_vertices.at(start->getId()));
-			distances[start->getId()] = 0;
+			distances[start->getId()] = 0; //setting distance to itself as zero
 		}
 		//while queue not empty
 		while (!dijkstra_queue.empty())
@@ -53,16 +53,16 @@ public:
 			dijkstra_queue.pop();
 
 			//make known
-			unordered_map<Vertex *, int>e = curV.getEdges();
+			unordered_map<Vertex *, int>e = curV.getEdges(); //vertex of edges at current vertex
 			for (auto edge: e)
 			{
 				int vNum = edge.first->getId();
-				int cost = edge.second;
+				int cost = edge.second; //path weight
 				//push on outgoing edges
 				if (distances[vNum] > distances[curID] + cost)
 				{
-					distances[vNum] = distances[curID] + cost;
-					dijkstra_queue.push(_vertices.at(vNum));
+					distances[vNum] = distances[curID] + cost; //update distances
+					dijkstra_queue.push(_vertices.at(vNum)); //push vertex to queue
 				}
 			}
 			
