@@ -1,6 +1,6 @@
 
 
-#include "dictionary.h"
+#include "DICKtionary.h"
 
 int main(int argc,char *argv []) //takes in a string, which will be treated as a file name
 {
