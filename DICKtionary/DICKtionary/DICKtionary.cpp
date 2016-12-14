@@ -1,4 +1,4 @@
-#include "dictionary.h"
+#include "DICKtionary.h"
 Word::Word(string newName, string newDef) //word class constructor
 {
 	name = newName;
